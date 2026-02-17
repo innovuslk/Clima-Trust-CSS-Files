@@ -1,0 +1,130 @@
+/* --- SCOPED CONTAINER --- */
+  .clima-contact-section {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    background-size: 40px 40px;
+    padding: 0px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Main Container */
+  .clima-container {
+    max-width: 1200px;
+    width: 100%;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  /* --- TEXT SECTION (Top) --- */
+  .clima-text-content {
+    max-width: 700px;
+    text-align: center;
+  }
+
+  .clima-label {
+    color: #268C90;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .clima-heading {
+    font-size: 48px;
+    color: #111827;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+  }
+
+  .clima-desc {
+    font-size: 18px;
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0 auto;
+  }
+
+  /* --- CARDS GRID (Side by Side) --- */
+  .clima-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 30px;
+    width: 100%;
+    align-items: stretch; /* Makes both cards equal height */
+  }
+
+  .clima-paper-card {
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(38, 140, 144, 0.1);
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* --- FORM STYLES --- */
+  .clima-form-group { margin-bottom: 20px; }
+  .clima-form-group label { display: block; font-size: 14px; color: #6B7280; margin-bottom: 8px; }
+  
+  .clima-input {
+    width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #E5E7EB;
+    font-family: 'Inter', sans-serif; font-size: 16px; color: #111827; outline: none;
+    background: transparent; transition: border-color 0.3s;
+  }
+  
+  /* Specific styling for the textarea to fit the theme */
+  textarea.clima-input {
+    resize: none;
+    line-height: 1.5;
+  }
+
+  .clima-input:focus { border-bottom-color: #268C90; }
+  
+  .clima-submit {
+    margin-top: auto; 
+    background: #268C90; color: white; border: none; padding: 14px 28px;
+    font-weight: 600; border-radius: 6px; cursor: pointer; transition: background 0.3s;
+    width: 100%;
+  }
+  .clima-submit:hover { background: #1e7073; }
+
+  /* --- INFO STYLES --- */
+  .info-block { margin-bottom: 24px; border: 1px solid #F3F4F6; border-radius: 12px; padding: 20px; }
+  .info-title { font-weight: 700; color: #111827; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 18px;}
+  .info-row { display: flex; gap: 12px; margin-bottom: 8px; font-size: 15px; color: #555; align-items: flex-start; }
+  .info-row i { color: #268C90; margin-top: 4px; }
+  
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; text-align: center; }
+  .social-item { 
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    color: #6B7280; text-decoration: none; font-size: 14px; 
+    padding: 10px; border-radius: 8px; background: #F9FAFB; transition: all 0.3s;
+  }
+  .social-item i { font-size: 18px; color: #9CA3AF; transition: color 0.3s;}
+  .social-item:hover { color: #268C90; background: #eefcfc; }
+  .social-item:hover i { color: #268C90; }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 991px) {
+    .clima-cards-grid {
+      grid-template-columns: 1fr; 
+      max-width: 500px; 
+    }
+    .clima-heading { font-size: 36px; }
+  }
+
+  @media (max-width: 480px) {
+      .clima-contact-section { padding: 50px 20px; }
+      .clima-paper-card { padding: 25px; }
+      .social-grid { grid-template-columns: 1fr; } 
+  }
