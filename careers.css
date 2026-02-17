@@ -1,0 +1,133 @@
+ /* 1. CARD CONTAINER */
+  .career-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05);
+    height: 100%; /* Ensures equal height in grid */
+    font-family: 'Roboto', sans-serif; /* or your site font */
+  }
+
+  .career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+
+  /* 2. IMAGE AREA */
+  .card-image-wrapper {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .card-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .career-card:hover .card-bg-img {
+    transform: scale(1.05);
+  }
+
+  /* 3. DATE BADGE (TOP LEFT) */
+  .date-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    min-width: 45px;
+    z-index: 2;
+  }
+
+  .date-day { display: block; font-size: 18px; font-weight: 700; color: #008080; line-height: 1; }
+  .date-month { display: block; font-size: 11px; font-weight: 500; text-transform: uppercase; color: #555; margin-top: 2px; }
+  .date-year { display: block; font-size: 10px; color: #999; }
+
+  /* 4. LOCATION BADGE (BOTTOM LEFT) */
+  .location-badge {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(0, 30, 30, 0.7);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* 5. TEXT CONTENT */
+  .card-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .meta-dept {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #008080;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .job-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    flex-grow: 1;
+  }
+
+  .email-info {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .apply-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: #008080;
+    border: 1px solid #008080;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .apply-btn:hover {
+    background-color: #008080;
+    color: #fff;
+  }
