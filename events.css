@@ -1,0 +1,215 @@
+  /* --- GLOBAL SETUP --- */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Applied Roboto */
+    background-color: #f9fbfc;
+  }
+
+  /* --- SECTION WRAPPER --- */
+  .events-section {
+    width: 100%;
+    padding: 80px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .events-container {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* --- HEADER --- */
+  .section-header {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .header-line {
+    width: 5px;
+    height: 32px;
+    background-color: #268C90;
+    border-radius: 0px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  /* --- GRID LAYOUT --- */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns Desktop */
+    gap: 30px;
+    width: 100%;
+    /* This ensures rows have equal height based on the tallest content */
+    align-items: stretch;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* --- EVENT CARD STYLES --- */
+  .event-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    
+    /* FIX FOR UNIFORM HEIGHTS */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Image Container */
+  .event-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 65%; /* Aspect Ratio */
+    overflow: hidden;
+    flex-shrink: 0; /* Prevents image from shrinking if text is huge */
+  }
+
+  .event-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .event-card:hover .event-img {
+    transform: scale(1.08);
+  }
+
+  /* --- OVERLAYS --- */
+  .event-date-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-width: 50px;
+    z-index: 2;
+  }
+
+  .date-day {
+    font-size: 20px;
+    font-weight: 800;
+    color: #268C90;
+    line-height: 1;
+  }
+
+  .date-month {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #374151;
+    margin-top: 2px;
+  }
+
+  .date-year {
+    font-size: 10px;
+    color: #9CA3AF;
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    padding-top: 2px;
+  }
+
+  .event-location-tag {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .event-location-tag i { color: #2dd4bf; }
+
+  /* --- CONTENT AREA --- */
+  .event-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Pushes content to fill the card height */
+    justify-content: flex-start;
+  }
+
+  .event-meta {
+    font-size: 13px;
+    color: #6B7280;
+    margin-bottom: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .event-meta i { color: #268C90; }
+
+  .event-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.4;
+    
+    /* Ellipsis for long text to keep height consistent */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    transition: color 0.3s;
+  }
+
+  .event-card:hover .event-title {
+    color: #268C90;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 991px) {
+    .events-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 Columns Tablet */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .events-grid {
+      grid-template-columns: 1fr; /* 1 Column Mobile */
+    }
+    .section-title { font-size: 28px; }
+    .events-section { padding: 40px 15px; }
+  }
