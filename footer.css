@@ -1,0 +1,225 @@
+  /* --- FOOTER CONTAINER --- */
+  .clima-footer {
+    background-color: #268C90; 
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    width: 100%;
+  }
+
+  /* --- MAIN CONTENT GRID --- */
+  .footer-main-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    padding-bottom: 60px;
+  }
+
+  /* --- TYPOGRAPHY --- */
+  .footer-heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .footer-subheading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+
+  .footer-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #e0f2f2;
+    max-width: 90%; 
+  }
+
+  /* --- LINKS --- */
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 0.8;
+  }
+
+  /* --- NEWSLETTER SECTION --- */
+  .newsletter-text {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  .newsletter-form .input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15); 
+    border-radius: 6px;
+    padding: 5px 5px 5px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;       
+    max-width: 380px; 
+  }
+
+  .mail-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    opacity: 0.7;
+  }
+
+  .newsletter-form input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    flex-grow: 1;
+    outline: none;
+    min-width: 0;
+  }
+
+  .newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .newsletter-form button {
+    background-color: #fff;
+    color: #0d4e52;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap; 
+  }
+
+  .newsletter-form button:hover {
+    background-color: #acaaaa;
+    color: #fff;
+  }
+
+  /* --- SOCIAL ICONS --- */
+  .social-icons {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover svg {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  /* --- BOTTOM BAR --- */
+  .footer-bottom-bar {
+    margin-left: 12vw;
+    margin-right: 12vw;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .legal-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .legal-links a:hover {
+    color: #ffffff;
+  }
+
+  .separator {
+    margin: 0 8px;
+  }
+
+  /* ========================================= */
+  /* === RESPONSIVE DESIGN (FIXED) === */
+  /* ========================================= */
+
+  /* Tablet (Portrait) and Small Desktops */
+  @media screen and (max-width: 991px) {
+    .footer-main-content {
+      grid-template-columns: 1fr 1fr; /* 2 columns */
+      margin-left: 5vw; 
+      margin-right: 5vw;
+      gap: 50px;
+    }
+    
+    .footer-bottom-bar {
+      margin-left: 5vw;
+      margin-right: 5vw;
+    }
+  }
+
+  /* Mobile Devices (Under 768px) */
+  /* THIS SECTION HANDLES THE "UGLY" PART */
+  @media screen and (max-width: 767px) {
+    .footer-main-content {
+      grid-template-columns: 1fr; /* Force 1 column on all phones */
+      gap: 40px;
+      margin-left: 20px; /* Use px for safety on mobile */
+      margin-right: 20px;
+      text-align: center; /* Center align everything */
+    }
+
+    /* Center Description */
+    .footer-desc {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+
+    /* Center Form */
+    .newsletter-form .input-wrapper {
+        margin: 0 auto; 
+    }
+    
+    /* Center Social Icons */
+    .social-icons {
+        justify-content: center;
+    }
+
+    /* Stack Bottom Bar */
+    .footer-bottom-bar {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-bottom: 20px;
+    }
+  }
