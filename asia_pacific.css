@@ -1,0 +1,347 @@
+  /* --- GLOBAL RESETS --- */
+  body, html {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff; 
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    width: 100%;
+  }
+
+  /* --- COMMON WRAPPERS --- */
+  .universal-wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative; 
+    z-index: 10; 
+  }
+
+  /* =========================================
+      SECTION 1: ASIA PACIFIC (PARENT WRAPPER)
+     ========================================= */
+    
+  .asia-section-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 800px; 
+    overflow: visible; 
+    padding: 80px 0;
+    
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center; 
+    
+    z-index: 1;
+  }
+
+  .asia-content-inner {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+  }
+
+  .asia-text-block {
+    max-width: 600px; 
+    align-self: flex-start;
+    margin-top: 60px;
+  }
+
+  .asia-title {
+    font-size: 50px; 
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+  }
+
+  .asia-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .country-list { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: block; 
+    color: #1F8788; 
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic; 
+  }
+
+  .country-list li { display: inline; }
+  .country-list li::after { content: ", "; color: #333; }
+  .country-list li:last-child::after { content: ""; }
+
+  /* MAP IMAGE STYLING */
+  .asia-bg-map {
+    position: absolute;
+    top: 0; 
+    right: -10%; 
+    width: 70vw; 
+    height: 100%; 
+    object-fit: contain; 
+    object-position: top right;
+    z-index: -1; 
+    
+    /* UPDATED: Increased Opacity so it is visible behind the glass box */
+    opacity: 0.5; 
+    
+    pointer-events: none; 
+    -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+    mask-image: linear-gradient(to right, transparent, black 40%);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 991px) {
+    .asia-section-wrapper { padding: 60px 0; text-align: left; }
+    .asia-title { font-size: 42px; }
+    .asia-bg-map { width: 100vw; height: auto; top: 5%; right: -20%; opacity: 0.2; }
+  }
+
+  @media (max-width: 600px) {
+    .asia-title { font-size: 36px; }
+    .asia-bg-map { top: 10%; right: -30%; width: 130vw; }
+  }
+
+
+  /* =========================================
+      SECTION 3: PROFILE STYLES
+     ========================================= */
+  .profile-section-container {
+    /* UPDATED: Very transparent white (0.15) */
+    background-color: rgba(255, 255, 255, 0.15); 
+    
+    /* UPDATED: REMOVED BLUR so the map lines are sharp */
+    /* backdrop-filter: blur(12px); */
+    
+    padding: 40px;
+    border-radius: 12px;
+    
+    /* UPDATED: Thinner border */
+    border: 1px solid rgba(255,255,255, 0.4);
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 100%;
+    margin-top: 150px; 
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s ease;
+    z-index: 10; 
+  }
+
+  /* --- VIEW LOGIC --- */
+  .profiles-row {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .fixed-profile-wrapper {
+    flex: 0 0 220px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .scrollable-team-wrapper {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  .detailed-view {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                visibility 0.6s;
+    z-index: 1;
+    max-height: 400px; 
+  }
+
+  .profile-section-container.show-details .profiles-row {
+    opacity: 0;
+    transform: translateY(-30px);
+    pointer-events: none;
+  }
+
+  .profile-section-container.show-details .detailed-view {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .profile-card { text-align: center; transition: transform 0.4s ease; cursor: pointer; padding: 10px; }
+  .profile-card:hover { transform: translateY(-5px); }
+    
+  .profile-image { border-radius: 50%; object-fit: cover; margin-bottom: 10px; background-color: #ddd; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    
+  .profiles-row .profile-image { width: 140px; height: 140px; }
+  .profiles-row .profile-name { font-size: 1.1em; margin-top: 10px; }
+  .profiles-row .profile-card { width: 180px; }
+
+  .detailed-view .profile-image { width: 80px; height: 80px; }
+  .detailed-view .profile-card { width: 110px; }
+
+  .profile-name { font-weight: bold; margin-bottom: 5px; color: #222; }
+  .profile-designation { color: #888; font-size: 0.85em; }
+
+  .main-profile {
+    background-color: rgba(248, 249, 250, 0.85); /* Kept solid for readability */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 0 0 250px; 
+    margin-right: 40px;
+  }
+  .main-profile .profile-image { width: 180px; height: 180px; border: 4px solid #fff; }
+
+  .profile-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; 
+    position: relative; 
+    width: 100%; 
+  }
+
+  .profile-description {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8); /* Added shadow for readability */
+  }
+
+  /* --- SCROLL WRAPPER --- */
+  .scroll-wrapper {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) 40px; 
+    gap: 15px;
+    align-items: flex-start; 
+  }
+
+  .scroll-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.3s ease;
+    color: #555;
+  }
+  .scroll-btn:hover { background-color: #1F8788; color: white; border-color: #1F8788; }
+
+  .profiles-row .scroll-btn { margin-top: 62.5px; }
+  .detailed-view .scroll-btn { margin-top: 32.5px; }
+
+  /* --- HIDDEN SCROLLBAR --- */
+  .other-profiles {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;         
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;
+  }
+  .other-profiles::-webkit-scrollbar { display: none; }
+    
+  .other-profiles .profile-card {
+    transform: scale(0.95);
+    flex: 0 0 auto; 
+    padding: 0;
+  }
+  .other-profiles .profile-card:hover { transform: scale(1); }
+
+  /* Mobile/Tablet */
+  @media screen and (max-width: 991px) {
+    .profile-section-container { 
+        padding: 30px 20px; 
+        height: auto; 
+        overflow: visible; 
+        display: block; 
+        width: 100%;
+        margin: 20px auto;
+        background-color: rgba(255,255,255,0.8); /* More solid on mobile */
+    }
+    
+    .profiles-row { display: none !important; }
+    .profile-section-container.show-details .profiles-row { display: none; }
+    .profile-section-container.show-details .detailed-view { opacity: 1; visibility: visible; transform: none; }
+
+    .detailed-view { 
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        text-align: center; 
+        position: relative; 
+        transform: none; 
+        opacity: 1; 
+        visibility: visible;
+        max-height: none;
+        width: 100%; 
+    }
+    
+    .main-profile { 
+        width: 100%; 
+        max-width: 300px; 
+        margin: 0 auto 25px auto; 
+        flex: none; 
+        box-sizing: border-box;
+    }
+    
+    .profile-details { width: 100%; text-align: center; }
+    .profile-description { padding: 0 10px; }
+    
+    .scroll-wrapper { display: block; width: 100%; max-width: 100%; overflow: hidden; }
+    .scroll-btn { display: none; }
+    
+    .other-profiles { width: 100%; padding-bottom: 20px; gap: 0; justify-content: space-between; }
+    .other-profiles .profile-card { flex: 0 0 32%; width: auto; padding: 0 2px; box-sizing: border-box; }
+    .other-profiles .profile-image { width: 60px; height: 60px; }
+    .other-profiles .profile-name { font-size: 0.75em; }
+  }
